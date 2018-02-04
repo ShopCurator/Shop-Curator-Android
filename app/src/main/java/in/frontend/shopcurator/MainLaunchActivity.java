@@ -14,6 +14,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -55,7 +56,7 @@ public class MainLaunchActivity extends AppCompatActivity {
         mContext = this.getApplicationContext();
 
 
-        TextView b = (TextView) findViewById(R.id.searchButton);
+        ImageButton b = (ImageButton) findViewById(R.id.searchButton);
         b.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -88,10 +89,10 @@ public class MainLaunchActivity extends AppCompatActivity {
                                 ProductViewAdapter mAdapter = new ProductViewAdapter(response, mContext);
                                 mRecyclerView.setAdapter(mAdapter);
                                 mRecyclerView.setVisibility(View.VISIBLE);
-                                notFound.setText("");
+                                notFound.setVisibility(View.GONE);
                             } else {
-                                notFound.setText("No results found");
-                                mRecyclerView.setVisibility(View.INVISIBLE);
+                                notFound.setVisibility(View.VISIBLE);
+                                mRecyclerView.setVisibility(View.GONE);
                             }
                         } catch (Exception e) {
 

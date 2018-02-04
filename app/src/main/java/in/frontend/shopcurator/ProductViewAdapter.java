@@ -2,6 +2,8 @@ package in.frontend.shopcurator;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.LayerDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,7 +61,15 @@ private  Context mContext;
             TextView companyTextView = holder.companyTextView;
             companyTextView.setText(companyName);
             LinearLayout bgColorView = holder.bgColorView;
-            bgColorView.setBackgroundColor(Color.parseColor(getColor(companyName)));
+//            bgColorView.setBackgroundColor(Color.parseColor(getColor(companyName)));
+//            priceTextView.setBackgroundColor(Color.parseColor(getColor(companyName)));
+//            companyTextView.setBackgroundColor(Color.parseColor(getColor(companyName)));
+            LayerDrawable layerDrawable = (LayerDrawable) mContext.getResources()
+                    .getDrawable(R.drawable.price_view_bg);
+            GradientDrawable gradientDrawable = (GradientDrawable) layerDrawable
+                    .findDrawableByLayerId(R.id.filling);
+            gradientDrawable.setColor(Color.parseColor(getColor(companyName)));
+            bgColorView.setBackgroundDrawable(layerDrawable);
 
         }catch (Exception e){
 
